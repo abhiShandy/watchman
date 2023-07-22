@@ -1,16 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import { Link } from "expo-router";
 
-export default function App() {
-  const openQRCodeScanner = () => {
-    console.log("openQRCodeScanner");
-  };
-
+export default function Transactions() {
   return (
     <View style={styles.container}>
-      <Pressable onPress={openQRCodeScanner}>
-        <Text>Import Electrum Multisig Wallet</Text>
-      </Pressable>
+      <Link href="/">Import</Link>
+      <Text>Transactions</Text>
       <StatusBar style="auto" />
     </View>
   );
