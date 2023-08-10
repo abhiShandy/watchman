@@ -19,9 +19,18 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.abhishandy.readmultisig"
     },
     "scheme": "read-multisig",
-    "plugins": ["expo-router"]
+    "plugins": ["expo-router"],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "7357c6bd-f78d-495b-ab05-4a5cef423da5"
+      }
+    }
   }
 }
