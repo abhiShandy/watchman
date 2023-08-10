@@ -21,6 +21,7 @@
         "backgroundColor": "#ffffff"
       }
     },
-    "scheme": "read-multisig"
+    "scheme": "read-multisig",
+    "plugins": ["expo-router"]
   }
 }
