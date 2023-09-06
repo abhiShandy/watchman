@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 
-export default function App() {
+export function Scanner({ handleScanned }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
@@ -17,7 +17,7 @@ export default function App() {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    handleScanned(data);
   };
 
   if (hasPermission === null) {
@@ -35,6 +35,31 @@ export default function App() {
       />
       {scanned && (
         <Button title={"Tap to Scan Again"} onPress={() => setScanned(false)} />
+      )}
+    </View>
+  );
+}
+
+export default function App() {
+  const [coSigners, setCoSigners] = useState([]);
+  const [showScanner, setShowScanner] = useState(false);
+  return (
+    <View style={styles.container}>
+      <Text>List of Co-signers</Text>
+
+      {coSigners.map((coSigner, index) => (
+        <Text key={index}>{index + 1 + "." + coSigner}</Text>
+      ))}
+
+      <Button title="Add Co-signer" onPress={() => setShowScanner(true)} />
+
+      {showScanner && (
+        <Scanner
+          handleScanned={(data) => {
+            setCoSigners([...coSigners, data]);
+            setShowScanner(false);
+          }}
+        />
       )}
     </View>
   );
