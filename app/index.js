@@ -47,6 +47,7 @@ export function Scanner({ handleScanned }) {
 export default function App() {
   const [coSigners, setCoSigners] = useState([]);
   const [showScanner, setShowScanner] = useState(false);
+  const [text, setText] = useState("");
   return (
     <View style={styles.container}>
       <Text>List of Co-signers</Text>
@@ -82,8 +83,11 @@ export default function App() {
             }),
           });
           console.log("Bitcoin Address:", address);
+          setText(address);
         }}
       />
+
+      <Text>{text}</Text>
     </View>
   );
 }
