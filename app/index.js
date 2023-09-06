@@ -11,22 +11,6 @@ secp.etc.hmacSha256Sync = (k, ...m) =>
 secp.etc.hmacSha256Async = (k, ...m) =>
   Promise.resolve(secp.etc.hmacSha256Sync(k, ...m));
 
-(async () => {
-  // keys, messages & other inputs can be Uint8Arrays or hex strings
-  // Uint8Array.from([0xde, 0xad, 0xbe, 0xef]) === 'deadbeef'
-  const privKey = secp.utils.randomPrivateKey(); // Secure random private key
-  // sha256 of 'hello world'
-  const msgHash =
-    "b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9";
-  const pubKey = secp.getPublicKey(privKey);
-  const signature = await secp.signAsync(msgHash, privKey); // Sync methods below
-  const isValid = secp.verify(signature, msgHash, pubKey);
-
-  const alicesPubkey = secp.getPublicKey(secp.utils.randomPrivateKey());
-  secp.getSharedSecret(privKey, alicesPubkey); // Elliptic curve diffie-hellman
-  signature.recoverPublicKey(msgHash); // Public key recovery
-})();
-
 const db = SQLite.openDatabase("db.db");
 
 export function Scanner({ handleScanned }) {
