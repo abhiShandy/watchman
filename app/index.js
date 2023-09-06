@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import * as SQLite from "expo-sqlite";
+
+const db = SQLite.openDatabase("db.db");
 
 export function Scanner({ handleScanned }) {
   const [hasPermission, setHasPermission] = useState(null);
@@ -54,12 +57,15 @@ export default function App() {
       <Button title="Add Co-signer" onPress={() => setShowScanner(true)} />
 
       {showScanner && (
-        <Scanner
-          handleScanned={(data) => {
-            setCoSigners([...coSigners, data]);
-            setShowScanner(false);
-          }}
-        />
+        <>
+          <Scanner
+            handleScanned={(data) => {
+              setCoSigners([...coSigners, data]);
+              setShowScanner(false);
+            }}
+          />
+          <Button title="Cancel" onPress={() => setShowScanner(false)} />
+        </>
       )}
     </View>
   );
