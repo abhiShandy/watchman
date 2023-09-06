@@ -24,7 +24,15 @@
       "package": "com.abhishandy.readmultisig"
     },
     "scheme": "read-multisig",
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $1 to use your camera"
+        }
+      ]
+    ],
     "extra": {
       "router": {
         "origin": false

@@ -1,40 +1,49 @@
-import { StatusBar } from "expo-status-bar";
-import { Pressable, Text, SafeAreaView, FlatList } from "react-native";
+import React, { useState, useEffect } from "react";
+import { Text, View, StyleSheet, Button } from "react-native";
+import { BarCodeScanner } from "expo-barcode-scanner";
 
 export default function App() {
-  const openQRCodeScanner = () => {
-    console.log("openQRCodeScanner");
+  const [hasPermission, setHasPermission] = useState(null);
+  const [scanned, setScanned] = useState(false);
+
+  useEffect(() => {
+    const getBarCodeScannerPermissions = async () => {
+      const { status } = await BarCodeScanner.requestPermissionsAsync();
+      setHasPermission(status === "granted");
+    };
+
+    getBarCodeScannerPermissions();
+  }, []);
+
+  const handleBarCodeScanned = ({ type, data }) => {
+    setScanned(true);
+    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   };
 
+  if (hasPermission === null) {
+    return <Text>Requesting for camera permission</Text>;
+  }
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+
   return (
-    <SafeAreaView
-      style={{
-        alignItems: "center",
-        marginHorizontal: 32,
-      }}
-    >
-      <Pressable
-        onPress={openQRCodeScanner}
-        style={{
-          borderWidth: 2,
-          borderColor: "black",
-          padding: 4,
-          width: "100%",
-          height: 48,
-          alignItems: "center",
-          justifyContent: "center",
-          borderRadius: 4,
-        }}
-      >
-        <Text
-          style={{
-            fontWeight: 600,
-          }}
-        >
-          Import Wallet
-        </Text>
-      </Pressable>
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <View style={styles.container}>
+      <BarCodeScanner
+        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+        style={StyleSheet.absoluteFillObject}
+      />
+      {scanned && (
+        <Button title={"Tap to Scan Again"} onPress={() => setScanned(false)} />
+      )}
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+});
