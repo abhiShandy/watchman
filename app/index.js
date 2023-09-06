@@ -2,16 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import * as SQLite from "expo-sqlite";
-import "react-native-get-random-values";
-import * as secp from "@noble/secp256k1";
-import { hmac } from "@noble/hashes/hmac";
-import { sha256 } from "@noble/hashes/sha256";
-secp.etc.hmacSha256Sync = (k, ...m) =>
-  hmac(sha256, k, secp.etc.concatBytes(...m));
-secp.etc.hmacSha256Async = (k, ...m) =>
-  Promise.resolve(secp.etc.hmacSha256Sync(k, ...m));
-
-import * as bitcoin from "../lib/bitcoinjs-lib/src/";
+import * as bitcoin from "bitcoinjs-lib";
 
 const db = SQLite.openDatabase("db.db");
 
