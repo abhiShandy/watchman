@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import BIP32 from "bip32";
 
 export function Scanner({ handleScanned }) {
   const [hasPermission, setHasPermission] = useState(null);
