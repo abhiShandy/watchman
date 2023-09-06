@@ -28,7 +28,7 @@ export function Scanner({ handleScanned }) {
   }
 
   return (
-    <View style={styles.container}>
+    <View>
       <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={StyleSheet.absoluteFillObject}
@@ -44,7 +44,7 @@ export default function App() {
   const [coSigners, setCoSigners] = useState([]);
   const [showScanner, setShowScanner] = useState(false);
   return (
-    <View style={styles.container}>
+    <View>
       <Text>List of Co-signers</Text>
 
       {coSigners.map((coSigner, index) => (
@@ -64,11 +64,3 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-  },
-});
