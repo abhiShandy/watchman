@@ -15,7 +15,9 @@
     "build:ios:prod": "eas build --platform ios --profile production"
   },
   "dependencies": {
+    "@bitcoin-js/tiny-secp256k1-asmjs": "github:abhiShandy/tiny-secp256k1-asmjs",
     "@types/react": "~18.2.14",
+    "bip32": "github:abhiShandy/bip32",
     "bitcoinjs-lib": "github:abhiShandy/bitcoinjs-lib",
     "buffer": "^6.0.3",
     "expo": "^49.0.9",
