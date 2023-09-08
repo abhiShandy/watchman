@@ -17,6 +17,10 @@
       "bundleIdentifier": "com.abhishandy.readmultisig"
     },
     "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#3e5758"
+      },
       "package": "com.abhishandy.readmultisig"
     },
     "scheme": "read-multisig",
