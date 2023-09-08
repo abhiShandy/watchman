@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { View, StyleSheet, Button } from "react-native";
-import { Link, router } from "expo-router";
+import { Text, View, Pressable } from "react-native";
+import { router } from "expo-router";
 import { init } from "../lib/db";
 
 export default function App() {
@@ -9,19 +9,23 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Link href="/scan" asChild>
-        <Button title="Scan" />
-      </Link>
-      <Button title="Address" onPress={() => router.push("/address")} />
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Pressable
+        onPress={() => router.push("/setup")}
+        style={{
+          borderWidth: 1,
+          borderColor: "black",
+          padding: 12,
+        }}
+      >
+        <Text>Setup Wallet</Text>
+      </Pressable>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-  },
-});
