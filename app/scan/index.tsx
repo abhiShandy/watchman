@@ -24,7 +24,7 @@ export default function Scan() {
     // TODO: save Zpub to sqlite DB
     saveZpubToDB(data);
     // TODO: navigate to /cosigners
-    router.push("/cosigners");
+    router.push("/setup");
   };
 
   if (hasPermission === null) {
