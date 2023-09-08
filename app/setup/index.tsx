@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Button, Pressable } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import { getZpubsFromDB } from "../../lib/db";
 import { router } from "expo-router";
-import { shortenZpub } from "../../lib/bitcoin";
+import { shortenBase58 } from "../../lib/bitcoin";
 
 type Zpub = {
   id: string;
@@ -35,7 +35,7 @@ const ZpubRow = ({ zpubs, index }: { zpubs: Zpub[]; index: number }) => {
         {index + 1}.
       </Text>
       {(zpubs && zpubs[index] && (
-        <Text>{shortenZpub(zpubs[index].zpub)}</Text>
+        <Text>{shortenBase58(zpubs[index].zpub)}</Text>
       )) || <ScanButton />}
     </View>
   );
@@ -67,6 +67,26 @@ export default function Setup() {
         <ZpubRow zpubs={zpubs} index={0} />
         {zpubs && zpubs.length > 0 && <ZpubRow zpubs={zpubs} index={1} />}
         {zpubs && zpubs.length > 1 && <ZpubRow zpubs={zpubs} index={2} />}
+        {zpubs && zpubs.length === 3 && (
+          <Pressable
+            onPress={() => router.push("/summary")}
+            style={{
+              borderWidth: 1,
+              borderColor: "black",
+              padding: 12,
+              marginVertical: 8,
+              backgroundColor: "lightgray",
+            }}
+          >
+            <Text
+              style={{
+                textAlign: "center",
+              }}
+            >
+              Done
+            </Text>
+          </Pressable>
+        )}
       </View>
     </View>
   );

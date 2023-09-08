@@ -17,6 +17,20 @@ export const init = () => {
       }
     );
   });
+  // Create address table
+  db.transaction((tx) => {
+    tx.executeSql(
+      "CREATE TABLE IF NOT EXISTS addresses (id INTEGER PRIMARY KEY AUTOINCREMENT, address TEXT NOT NULL UNIQUE)",
+      [],
+      () => {
+        console.log("addresses table created");
+      },
+      (_, err) => {
+        console.error(err);
+        return false;
+      }
+    );
+  });
 };
 
 export const saveZpubToDB = (zpub: string) => {
@@ -44,6 +58,41 @@ export const getZpubsFromDB = () => {
         [],
         (_, { rows }) => {
           console.log(`fetched ${rows.length} zpubs`);
+          resolve(rows._array);
+        },
+        (_, err) => {
+          console.error(err);
+          reject(err);
+          return false;
+        }
+      );
+    });
+  });
+};
+
+export const bulkInsertAddresses = (addresses: string[]) => {
+  for (const address of addresses) {
+    db.transaction((tx) => {
+      tx.executeSql(
+        "INSERT INTO addresses (address) VALUES (?)",
+        [address],
+        (_, { rows }) => {
+          console.log(`inserted ${rows.length} addresses`);
+          console.log("address saved to db");
+        }
+      );
+    });
+  }
+};
+
+export const listAddresses = () => {
+  return new Promise((resolve, reject) => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        "SELECT * FROM addresses",
+        [],
+        (_, { rows }) => {
+          console.log(`fetched ${rows.length} addresses`);
           resolve(rows._array);
         },
         (_, err) => {

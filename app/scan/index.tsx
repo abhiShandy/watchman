@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { router } from "expo-router";
 import { saveZpubToDB } from "../../lib/db";
@@ -20,10 +20,7 @@ export default function Scan() {
   const handleBarCodeScanned = ({ data }) => {
     setScanned(true);
     alert(`Scanned: ${data}`);
-    // TODO: verify if data is a valid Zpub
-    // TODO: save Zpub to sqlite DB
     saveZpubToDB(data);
-    // TODO: navigate to /cosigners
     router.push("/setup");
   };
 
@@ -36,11 +33,22 @@ export default function Scan() {
 
   return (
     <View style={styles.container}>
+      <Text style={{ textAlign: "center", marginBottom: 16 }}>
+        Scan your Zpub
+      </Text>
       <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={styles.scanner}
       />
-      <Button title={"Go Back"} onPress={() => router.back()} />
+      <Pressable
+        onPress={() => router.back()}
+        style={{
+          padding: 12,
+          alignItems: "center",
+        }}
+      >
+        <Text>Go Back</Text>
+      </Pressable>
     </View>
   );
 }
