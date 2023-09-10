@@ -1,4 +1,5 @@
 import { router } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import { View, Text, Pressable, Button } from "react-native";
 
 export default function Summary() {
@@ -15,6 +16,7 @@ export default function Summary() {
           router.push("/address");
         }}
       />
+      <StatusBar style="auto" />
     </View>
   );
 }

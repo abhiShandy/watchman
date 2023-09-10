@@ -6,6 +6,7 @@ import {
   listAddresses,
 } from "../../lib/db";
 import { generateElectrumAddressList, shortenBase58 } from "../../lib/bitcoin";
+import { StatusBar } from "expo-status-bar";
 
 export default function Address() {
   const [addresses, setAddresses] = useState<string[]>();
@@ -47,6 +48,7 @@ export default function Address() {
           {index + 1 + "." + shortenBase58(address)}
         </Text>
       ))}
+      <StatusBar style="auto" />
     </View>
   );
 }

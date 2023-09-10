@@ -3,6 +3,7 @@ import { View, Text, Pressable } from "react-native";
 import { getZpubsFromDB } from "../../lib/db";
 import { router } from "expo-router";
 import { shortenBase58 } from "../../lib/bitcoin";
+import { StatusBar } from "expo-status-bar";
 
 type Zpub = {
   id: string;
@@ -88,6 +89,7 @@ export default function Setup() {
           </Pressable>
         )}
       </View>
+      <StatusBar style="auto" />
     </View>
   );
 }

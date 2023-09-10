@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Text, View, Pressable } from "react-native";
 import { router } from "expo-router";
 import { init } from "../lib/db";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
   useEffect(() => {
@@ -26,6 +27,7 @@ export default function App() {
       >
         <Text>Setup Wallet</Text>
       </Pressable>
+      <StatusBar style="auto" />
     </View>
   );
 }

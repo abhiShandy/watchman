@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Pressable } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { router } from "expo-router";
 import { saveZpubToDB } from "../../lib/db";
+import { StatusBar } from "expo-status-bar";
 
 export default function Scan() {
   const [hasPermission, setHasPermission] = useState(null);
@@ -49,6 +50,7 @@ export default function Scan() {
       >
         <Text>Go Back</Text>
       </Pressable>
+      <StatusBar style="auto" />
     </View>
   );
 }
