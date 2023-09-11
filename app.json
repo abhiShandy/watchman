@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "read-multisig",
-    "slug": "read-multisig",
-    "version": "1.0.0",
+    "name": "watchman",
+    "slug": "watchman",
+    "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -14,16 +14,16 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.abhishandy.readmultisig"
+      "bundleIdentifier": "com.abhishandy.watchman"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#3e5758"
       },
-      "package": "com.abhishandy.readmultisig"
+      "package": "com.abhishandy.watchman"
     },
-    "scheme": "read-multisig",
+    "scheme": "watchman",
     "plugins": [
       "expo-router",
       [
