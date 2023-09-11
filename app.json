@@ -14,14 +14,19 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.abhishandy.watchman"
+      "bundleIdentifier": "com.abhishandy.watchman",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access camera.",
+        "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#3e5758"
       },
-      "package": "com.abhishandy.watchman"
+      "package": "com.abhishandy.watchman",
+      "permissions": ["android.permission.CAMERA"]
     },
     "scheme": "watchman",
     "plugins": [
@@ -40,6 +45,12 @@
       "eas": {
         "projectId": "7357c6bd-f78d-495b-ab05-4a5cef423da5"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/7357c6bd-f78d-495b-ab05-4a5cef423da5"
     }
   }
 }
