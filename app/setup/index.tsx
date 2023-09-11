@@ -11,35 +11,52 @@ type Zpub = {
 };
 
 const ScanButton = () => (
-  <Pressable onPress={() => router.push("/scan")}>
-    <Text>Scan QR code</Text>
+  <Pressable
+    onPress={() => router.push("/scan")}
+    style={{
+      flexDirection: "row",
+      alignItems: "center",
+      borderWidth: 1,
+      borderColor: "black",
+      padding: 12,
+      marginVertical: 8,
+    }}
+  >
+    <Text
+      style={{
+        fontSize: 16,
+      }}
+    >
+      Scan QR code
+    </Text>
   </Pressable>
 );
 
 const ZpubRow = ({ zpubs, index }: { zpubs: Zpub[]; index: number }) => {
-  return (
-    <View
-      style={{
-        flexDirection: "row",
-        alignItems: "center",
-        borderWidth: 1,
-        borderColor: "black",
-        padding: 12,
-        marginVertical: 8,
-      }}
-    >
-      <Text
+  if (zpubs && zpubs[index])
+    return (
+      <View
         style={{
-          margin: 4,
+          flexDirection: "row",
+          alignItems: "center",
+          borderWidth: 1,
+          borderColor: "black",
+          padding: 12,
+          marginVertical: 8,
         }}
       >
-        {index + 1}.
-      </Text>
-      {(zpubs && zpubs[index] && (
-        <Text>{shortenBase58(zpubs[index].zpub)}</Text>
-      )) || <ScanButton />}
-    </View>
-  );
+        <Text
+          style={{
+            margin: 4,
+            fontSize: 16,
+          }}
+        >
+          {index + 1}.
+        </Text>
+        <Text style={{ fontSize: 16 }}>{shortenBase58(zpubs[index].zpub)}</Text>
+      </View>
+    );
+  return <ScanButton />;
 };
 
 export default function Setup() {
@@ -82,6 +99,7 @@ export default function Setup() {
             <Text
               style={{
                 textAlign: "center",
+                fontSize: 16,
               }}
             >
               Done

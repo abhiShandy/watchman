@@ -25,7 +25,13 @@ export default function App() {
           padding: 12,
         }}
       >
-        <Text>Setup Wallet</Text>
+        <Text
+          style={{
+            fontSize: 16,
+          }}
+        >
+          Setup Wallet
+        </Text>
       </Pressable>
       <StatusBar style="auto" />
     </View>

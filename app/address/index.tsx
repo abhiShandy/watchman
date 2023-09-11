@@ -29,7 +29,7 @@ export default function Address() {
         return;
       } else {
         const addressList = generateElectrumAddressList(
-          zpubs.map((zpub) => zpub.zpub)
+          zpubs.map((zpub) => zpub.zpub),
         );
         bulkInsertAddresses(addressList);
         setAddresses(addressList);

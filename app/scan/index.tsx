@@ -34,7 +34,7 @@ export default function Scan() {
 
   return (
     <View style={styles.container}>
-      <Text style={{ textAlign: "center", marginBottom: 16 }}>
+      <Text style={{ textAlign: "center", marginBottom: 16, fontSize: 16 }}>
         Scan your Zpub
       </Text>
       <BarCodeScanner
@@ -48,7 +48,7 @@ export default function Scan() {
           alignItems: "center",
         }}
       >
-        <Text>Go Back</Text>
+        <Text style={{ fontSize: 16 }}>Go Back</Text>
       </Pressable>
       <StatusBar style="auto" />
     </View>
