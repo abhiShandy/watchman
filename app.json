@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "watchman",
-    "slug": "watchman",
+    "slug": "read-multisig",
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
