@@ -23,7 +23,7 @@
     "bs58check": "^3.0.1",
     "buffer": "^6.0.3",
     "expo": "^49.0.10",
-    "expo-barcode-scanner": "~12.5.3",
+    "expo-barcode-scanner": "~12.7.0",
     "expo-constants": "~14.4.2",
     "expo-linking": "~5.0.2",
     "expo-router": "2.0.0",
