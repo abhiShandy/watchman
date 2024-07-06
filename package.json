@@ -43,9 +43,5 @@
     "@babel/core": "^7.24.0",
     "prettier": "^3.0.3"
   },
-  "private": true,
-  "resolutions": {
-    "metro": "0.76.0",
-    "metro-resolver": "0.76.0"
-  }
+  "private": true
 }
